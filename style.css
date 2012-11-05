@@ -1,0 +1,52 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+html.demo1 {
+  background: url(demo1/dark_wall.png); }
+
+.demo1 body {
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.73) 100%);;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.73) 100%);
+}
+
+.demo3 body:before,
+.demo4 body:before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.hub {
+	position: absolute;
+	top: 48px;
+	right: 0;
+	z-index: 10;
+	text-align: center;
+	font-family: helvetica;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 10px;
+}
+
+.hub a {
+	display: block;
+	width: 80px;
+	padding: 10px 0;	
+	color: #02E6E6;
+	text-decoration: none;
+}
+
+.hub a:hover {
+	background: #02E6E6;
+	color: black;
+}
