@@ -15,7 +15,8 @@ html.demo1 {
 }
 
 .demo3 body:before,
-.demo4 body:before {
+.demo4 body:before,
+.demo5 body:before {
 	content: '';
 	width: 100%;
 	height: 100%;
