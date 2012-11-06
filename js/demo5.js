@@ -74,13 +74,13 @@ function setupWebAudio() {
 
 	// MUTE DURING DEV MODE
 	
-	// Create a gain node.
-	gainNode = audioContext.createGainNode();
-	// Connect the source to the gain node.
-	source.connect(gainNode);
-	// Connect the gain node to the destination.
-	gainNode.connect(audioContext.destination);
-	gainNode.gain.value = 0;
+	// // Create a gain node.
+	// gainNode = audioContext.createGainNode();
+	// // Connect the source to the gain node.
+	// source.connect(gainNode);
+	// // Connect the gain node to the destination.
+	// gainNode.connect(audioContext.destination);
+	// gainNode.gain.value = -1;
 	
 	// END MUTE
 
@@ -131,7 +131,7 @@ function draw() {
 	}
 
 	ratio = totalMagnitude / maxMagnitude;
-	ctx.fillStyle = 'hsla(' + settings.hue + ', 50%, 50%, ' + (0.005 * ratio) + ')';
+	ctx.fillStyle = 'hsla(' + settings.hue + ', 50%, 50%, ' + (0.04 * ratio) + ')';
 	ctx.fillRect(0, 0, WIDTH, HEIGHT);
 }
 
