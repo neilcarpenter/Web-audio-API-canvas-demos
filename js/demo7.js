@@ -10,6 +10,10 @@ document.body.appendChild( stats.domElement );
 var WIDTH, HEIGHT, HALF_WIDTH, HALF_HEIGHT, ASPECT_RATIO, WIDTH_RATIO, HEIGHT_RATIO;
 var analyser, audio, audioContext, source, gainNode, maxMagnitude, c, ctx;
 
+// NOTE this is really 1024, but in the mp3 being used the range doesn't really get
+// past like 600, so looks a bit shit, so just use the data up to 600 only
+var freqRange = 600;
+
 var settings = {
 	bars: 200,
 	hue: 200
@@ -18,7 +22,7 @@ var settings = {
 window.onload = function() {
   init();
   var gui = new dat.GUI();
-  gui.add(settings, 'bars', 10, 600);
+  gui.add(settings, 'bars', 10, freqRange);
   gui.add(settings, 'hue', 0, 360);
 };
 
@@ -29,10 +33,10 @@ window.onresize = function() {
 	HALF_HEIGHT = HEIGHT / 2;
 	ASPECT_RATIO = HEIGHT / WIDTH;
 
-	WIDTH_RATIO = WIDTH / 600;
+	WIDTH_RATIO = WIDTH / freqRange;
 	HEIGHT_RATIO = HEIGHT / 255;
 
-	maxMagnitude = 600 * 255;
+	maxMagnitude = freqRange * 255;
 
 	c.width = WIDTH;
 	c.height = HEIGHT;
@@ -45,10 +49,10 @@ function init() {
 	HALF_HEIGHT = HEIGHT / 2;
 	ASPECT_RATIO = HEIGHT / WIDTH;
 
-	WIDTH_RATIO = WIDTH / 600;
+	WIDTH_RATIO = WIDTH / freqRange;
 	HEIGHT_RATIO = HEIGHT / 255;
 
-	maxMagnitude = 600 * 255;
+	maxMagnitude = freqRange * 255;
 
 	setupWebAudio();
 	createCanvas();
@@ -84,7 +88,7 @@ function draw() {
 
 	var strength, trueIndex, totalMagnitude;
 
-	var freqInc = Math.round(600 / settings.bars);
+	var freqInc = Math.round(freqRange / settings.bars);
 	var barWidth = Math.round(WIDTH / settings.bars);
 	var lightnessInc = Math.round(40 / settings.bars);
 	var hue = settings.hue;
@@ -100,7 +104,7 @@ function draw() {
 	ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
 	ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-	for (var i = 0; i <= 600; i += freqInc) {
+	for (var i = 0; i <= freqRange; i += freqInc) {
 		trueIndex = i / freqInc;
 		strength = Math.round(freqByteData[i] / 255);
 
