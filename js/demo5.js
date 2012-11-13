@@ -8,7 +8,7 @@ stats.domElement.style.zIndex = '10';
 document.body.appendChild( stats.domElement );
 
 var WIDTH, HEIGHT, HALF_WIDTH, HALF_HEIGHT, ASPECT_RATIO;
-var widthRatio, heightRatio, analyser, audio, audioContext, source, gainNode, maxMagnitude, c, ctx;
+var WIDTH_RATIO, HEIGHT_RATIO, analyser, audio, audioContext, source, gainNode, maxMagnitude, c, ctx;
 var circles = [];
 
 var settings = {
@@ -31,8 +31,8 @@ window.onresize = function() {
 	HALF_HEIGHT = HEIGHT / 2;
 	ASPECT_RATIO = HEIGHT / WIDTH;
 
-	widthRatio = WIDTH / 1024;
-	heightRatio = HEIGHT / 255;
+	WIDTH_RATIO = WIDTH / 1024;
+	HEIGHT_RATIO = HEIGHT / 255;
 
 	maxMagnitude = 1024 * 255;
 
@@ -47,8 +47,8 @@ function init() {
 	HALF_HEIGHT = HEIGHT / 2;
 	ASPECT_RATIO = HEIGHT / WIDTH;
 
-	widthRatio = WIDTH / 1024;
-	heightRatio = HEIGHT / 255;
+	WIDTH_RATIO = WIDTH / 1024;
+	HEIGHT_RATIO = HEIGHT / 255;
 
 	maxMagnitude = 1024 * 255;
 
@@ -121,7 +121,7 @@ function draw() {
 
 		ctx.strokeStyle = 'hsla(' + settings.hue + ', 50%, 50%, ' + ((1 / settings.circles) + 0.15) + ')';
 		ctx.fillStyle = 'hsla(' + settings.hue + ', 50%, 50%, ' + ((1 / settings.circles) + 0.05) + ')';
-	    ctx.beginPath();
+		ctx.beginPath();
 		ctx.arc(circles[i].x ,circles[i].y, circles[i].strength, 0, Math.PI*2, true);
 		ctx.stroke();
 		ctx.fill();

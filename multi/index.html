@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" class="multi">
+<head>
+	<meta charset="UTF-8">
+	<title>Web audio API + canvas demos</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	
+	<div class="heading">Web Audio API + canvas visualisation experiments</div>
+	
+	<div class="links"><a href="http://neilcarpenter.com/labs/web-audio-api-canvas/" target="_blank">Write up here</a><a href="https://github.com/neilcarpenter/Web-audio-API-canvas-demos" target="_blank">Code on GitHub</a><a href="http://uk.myspace.com/evilnine/music/songs/stay-up-clip-72010441" target="_blank">Evil Nine - "Stay Up"</a></div>
+	
+	<audio src="Evil nine - Stay up.mp3" preload="auto"></audio>
+	
+	<script src="js/stats.min.js"></script>
+	<script src="js/dat.gui.min.js"></script>
+	<script src="js/script.js"></script>
+
+	<script type="text/javascript">
+		if (window.location.host.indexOf('local') !== 0) {
+		    var _gaq = _gaq || [];
+		    _gaq.push(['_setAccount', 'UA-16253496-4']);
+		    _gaq.push(['_trackPageview']);
+		    (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		    })();
+		}
+	</script>
+
+</body>
+</html>

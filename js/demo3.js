@@ -8,7 +8,7 @@ stats.domElement.style.zIndex = '10';
 document.body.appendChild( stats.domElement );
 
 var WIDTH, HEIGHT, HALF_WIDTH, HALF_HEIGHT, ASPECT_RATIO;
-var widthRatio, heightRatio, analyser, audio, audioContext, source, gainNode, maxMagnitude, c, ctx;
+var WIDTH_RATIO, HEIGHT_RATIO, analyser, audio, audioContext, source, gainNode, maxMagnitude, c, ctx;
 
 var settings = {
 	circles: 30,
@@ -29,8 +29,8 @@ window.onresize = function() {
 	HALF_HEIGHT = HEIGHT / 2;
 	ASPECT_RATIO = HEIGHT / WIDTH;
 
-	widthRatio = WIDTH / 1024;
-	heightRatio = HEIGHT / 255;
+	WIDTH_RATIO = WIDTH / 1024;
+	HEIGHT_RATIO = HEIGHT / 255;
 
 	maxMagnitude = 1024 * 255;
 
@@ -45,8 +45,8 @@ function init() {
 	HALF_HEIGHT = HEIGHT / 2;
 	ASPECT_RATIO = HEIGHT / WIDTH;
 
-	widthRatio = WIDTH / 1024;
-	heightRatio = HEIGHT / 255;
+	WIDTH_RATIO = WIDTH / 1024;
+	HEIGHT_RATIO = HEIGHT / 255;
 
 	maxMagnitude = 1024 * 255;
 
@@ -65,12 +65,12 @@ function setupWebAudio() {
 
 	// this is just to shut it up in dev mode
 	// Create a gain node.
-	// gainNode = audioContext.createGainNode();
-	// // Connect the source to the gain node.
-	// source.connect(gainNode);
-	// // Connect the gain node to the destination.
-	// gainNode.connect(audioContext.destination);
-	// gainNode.gain.value = -1;
+	gainNode = audioContext.createGainNode();
+	// Connect the source to the gain node.
+	source.connect(gainNode);
+	// Connect the gain node to the destination.
+	gainNode.connect(audioContext.destination);
+	gainNode.gain.value = -1;
 
 	analyser.connect(audioContext.destination);
 
@@ -114,7 +114,7 @@ function draw() {
 
 		ctx.strokeStyle = 'hsla(' + settings.hue + ', 50%, 50%, ' + ((1 / settings.circles) + 0.1) + ')';
 		ctx.fillStyle = 'hsla(' + settings.hue + ', 50%, 50%, ' + (1 / settings.circles) + ')';
-	    ctx.beginPath();
+		ctx.beginPath();
 		ctx.arc((WIDTH / 2 - circleOffSetX) ,(HEIGHT / 2 - circleOffSetY), totals[i].strength, 0, Math.PI*2, true);
 		ctx.stroke();
 		ctx.fill();

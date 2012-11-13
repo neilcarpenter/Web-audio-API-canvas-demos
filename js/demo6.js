@@ -8,7 +8,7 @@ stats.domElement.style.zIndex = '10';
 document.body.appendChild( stats.domElement );
 
 var WIDTH, HEIGHT, HALF_WIDTH, HALF_HEIGHT, ASPECT_RATIO;
-var widthRatio, heightRatio, samplesPerSample, degreesPerSample;
+var WIDTH_RATIO, HEIGHT_RATIO, samplesPerSample, degreesPerSample;
 var analyser, audio, audioContext, source, gainNode, maxMagnitude, c, ctx;
 var circles = [];
 var baseAngle = 0;
@@ -38,8 +38,8 @@ window.onresize = function() {
 	HALF_HEIGHT = HEIGHT / 2;
 	ASPECT_RATIO = HEIGHT / WIDTH;
 
-	widthRatio = WIDTH / 1024;
-	heightRatio = HEIGHT / 255;
+	WIDTH_RATIO = WIDTH / 1024;
+	HEIGHT_RATIO = HEIGHT / 255;
 
 	maxMagnitude = 1024 * 255;
 
@@ -54,8 +54,8 @@ function init() {
 	HALF_HEIGHT = HEIGHT / 2;
 	ASPECT_RATIO = HEIGHT / WIDTH;
 
-	widthRatio = WIDTH / 1024;
-	heightRatio = HEIGHT / 255;
+	WIDTH_RATIO = WIDTH / 1024;
+	HEIGHT_RATIO = HEIGHT / 255;
 
 	samplesPerSample = Math.floor(1024 / settings.samples);
 	degreesPerSample = 360 / settings.samples;
@@ -114,7 +114,7 @@ function draw() {
 	ctx.beginPath();
 
 	for (var i = 0; i < 1024; i += samplesPerSample) {
-		strength = (freqByteData[i] * heightRatio) * 2;
+		strength = (freqByteData[i] * HEIGHT_RATIO) * 2;
 		
 		angle = baseAngle + ((i / 1024) * 360);
 
